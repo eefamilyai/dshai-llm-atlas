@@ -1012,9 +1012,9 @@ body.focus-mode .nb.speaking { opacity: 1; }
   flex: none;
 }
 .sr-item.sel .sr-ico { background: var(--accent-grad); color: #fff; }
-.sr-txt { min-width: 0; flex: 1; }
-.sr-t { font-size: 13.2px; font-weight: 560; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sr-d { font-size: 11.4px; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sr-txt { min-width: 0; flex: 1; display: block; }
+.sr-t { display: block; font-size: 13.2px; font-weight: 560; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sr-d { display: block; font-size: 11.4px; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sr-empty { padding: 26px 14px; text-align: center; font-size: 13px; color: var(--faint); }
 
 /* ================= TOAST ================= */
