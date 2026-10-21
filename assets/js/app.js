@@ -602,9 +602,15 @@
   function wireShell() {
     q("#themeBtn").addEventListener("click", function () {
       var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      var keepY = window.scrollY;
       applyTheme(next);
-      setTimeout(function () { refreshQueryState(); }, 60);
-      setTimeout(function () { if (current && current.remountOnTheme) render(current); }, 80);
+      // Re-render so every canvas (which bakes theme colours into pixels) is redrawn.
+      setTimeout(function () {
+        if (!current) return;
+        view.dataset.rendered = "";
+        render(current, null);
+        window.scrollTo(0, keepY);
+      }, 40);
     });
     q("#menuBtn").addEventListener("click", openSidebar);
     q("#sidebarClose").addEventListener("click", closeSidebar);

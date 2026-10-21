@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    09-logits.js — unembedding and softmax
    ========================================================================== */
 (function () {
@@ -62,7 +62,7 @@
         + '<div class="ctl"><div class="field" style="flex:1"><label>Temperature <b id="smT">1.00</b></label>'
         + '<input type="range" id="smTemp" min="0.1" max="2.5" step="0.05" value="1"></div></div>'
         + '<div class="attn-grid two"><div><div class="viz-title">Logits in</div><div id="smLogits"></div></div>'
-        + '<div><div class="viz-title">exp(logit) and the total</div><div id="smExp"></div></div></div>'
+        + '<div><div class="viz-title">exp(z − max z), and the total</div><div id="smExp"></div></div></div>'
         + '<div class="viz"><div class="viz-title">Probabilities out</div><div id="smProbs"></div>'
         + '<div class="stat-row" style="margin-top:13px" id="smStats"></div></div>'
         + "</div></div>"
@@ -127,7 +127,7 @@
           name: "exp(z)",
           rows: [exDisplay],
           colHeads: C.map(function (c) { return c.trim(); }),
-          desc: "normalised to max = 1 for display · sum = " + sum.toFixed(2),
+          desc: "already max-scaled: the largest is 1.000 · Σ = " + sum.toFixed(2),
           dec: 2, heat: true, scheme: "seq", maxAbs: 1, cls: "narrow"
         });
 

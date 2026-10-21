@@ -140,14 +140,13 @@
         } else {
           var zt = z.map(function (v) { return v / T; });
           probs = M.softmax(zt);
-          if (mode === "topk") probs = renorm(M.topKMask(zt, k));
-          if (mode === "topp") probs = renorm(M.topPMask(probs, p));
+          if (mode === "topk") probs = M.softmax(M.topKMask(zt, k));
+          if (mode === "topp") probs = norm(M.topPMask(probs, p));
         }
         return probs;
       }
 
-      function renorm(maskedLogits) {
-        var p = M.softmax(maskedLogits);
+      function norm(p) {
         var s = p.reduce(function (a, b) { return a + b; }, 0) || 1;
         return p.map(function (v) { return v / s; });
       }
